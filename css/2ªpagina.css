@@ -1,0 +1,266 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+.video-container{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    overflow:hidden;
+}
+
+.video-container video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.9)),
+    radial-gradient(circle at top,rgba(255,122,0,.18),transparent 50%);
+}
+
+header{
+    position:fixed;
+    top:25px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:1400px;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15,15,15,.4);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    z-index:1000;
+}
+
+.logo{
+    font-size:1.6rem;
+    font-weight:700;
+    color:#ff7a00;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+    position:relative;
+}
+
+nav a:hover{
+    color:#ff7a00;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    left:0;
+    width:0;
+    height:2px;
+    background:#ff7a00;
+    transition:.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+.categories{
+    width:100%;
+    min-height:100vh;
+    padding:170px 8% 80px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title span{
+    display:inline-block;
+    padding:10px 22px;
+    border-radius:999px;
+    background:rgba(255,122,0,.12);
+    border:1px solid rgba(255,122,0,.35);
+    color:#ffb347;
+    margin-bottom:18px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    max-width:700px;
+    margin:auto;
+    color:#d8d8d8;
+    line-height:1.8;
+}
+
+.categories-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+    max-width:1400px;
+    margin:auto;
+}
+
+.category-card{
+    position:relative;
+    height:340px;
+    overflow:hidden;
+    border-radius:22px;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+    background:#111;
+}
+
+.category-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.category-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:35px;
+    background:linear-gradient(to top,
+    rgba(0,0,0,.95),
+    rgba(0,0,0,.15));
+}
+
+.category-overlay h3{
+    font-size:2rem;
+    color:#fff;
+    margin-bottom:12px;
+}
+
+.category-overlay p{
+    color:#d7d7d7;
+    line-height:1.7;
+}
+
+.category-card:hover{
+    transform:translateY(-10px);
+    border-color:#ff7a00;
+    box-shadow:0 20px 40px rgba(255,122,0,.3);
+}
+
+.category-card:hover img{
+    transform:scale(1.08);
+}
+
+.category-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,
+    rgba(255,122,0,.25),
+    transparent 60%);
+    opacity:0;
+    transition:.4s;
+    z-index:1;
+}
+
+.category-card:hover::before{
+    opacity:1;
+}
+
+.category-overlay{
+    z-index:2;
+}
+
+.credits{
+    text-align:center;
+    padding:30px;
+    color:#bdbdbd;
+    font-size:.9rem;
+}
+
+.hidden{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:900px){
+
+    header{
+        padding:16px 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .section-title h2{
+        font-size:2.4rem;
+    }
+
+    .categories-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .categories{
+        padding:140px 6% 60px;
+    }
+
+    .category-card{
+        height:280px;
+    }
+
+    .category-overlay{
+        padding:25px;
+    }
+
+    .category-overlay h3{
+        font-size:1.6rem;
+    }
+
+    .category-overlay p{
+        font-size:.95rem;
+    }
+
+}
